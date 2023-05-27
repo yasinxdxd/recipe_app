@@ -30,7 +30,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     context, MaterialPageRoute(builder: (_) => SignIn()));
               }, //to login screen. We will update later
               child: const Text(
-                'Atla',
+                'Skip',
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 16.0,
