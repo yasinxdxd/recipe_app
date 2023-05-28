@@ -45,7 +45,8 @@ class AuthMethods {
     return result;
   }
 
-  Future<bool> signUpWithEmail(String email, String password) async {
+  Future<bool> signUpWithEmail(
+      String email, String password, String fullName) async {
     bool result = false;
 
     try {
@@ -63,6 +64,13 @@ class AuthMethods {
     } catch (e) {
       print(e);
     }
+
+    try {
+      Map<String, dynamic> userData = Map();
+      userData["email"] = email;
+      userData["name"] = fullName;
+      _firestore.collection("Users").add(userData);
+    } catch (e) {}
     return result;
   }
 
@@ -74,6 +82,15 @@ class AuthMethods {
           .signInWithEmailAndPassword(email: email, password: password);
 
       result = true;
+
+      try {
+        print(_firestore
+            .collection("Users")
+            .get()
+            .then((querySnapshot) => querySnapshot.docs.forEach((doc) {
+                  print(doc["email"]);
+                })));
+      } catch (e) {}
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
