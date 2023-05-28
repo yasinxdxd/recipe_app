@@ -25,194 +25,221 @@ class SignIn extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         child: SingleChildScrollView(
           child: Row(
-            //mainAxisAlignment: MainAxisAlignment.center,
-            //crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('assets/images/signin.png'),
               SizedBox(
-                width: size.width * 0.2,
-                height: size.height * 0.5,
-                child: const Text(
-                  'Giriş Yap',
-                  style: TextStyle(
-                    fontSize: 35.0,
-                    fontWeight: FontWeight.w700,
+                width: size.width / 2,
+                height: size.height / 2,
+                child: Image.asset('assets/images/signin.png'),
+              ),
+              Column(
+                children: [
+                  SizedBox(
+                    width: size.width / 4,
+                    height: size.height / 8,
                   ),
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              CustomTextfield(
-                func: (val) {
-                  email = val;
-                },
-                obscureText: false,
-                hintText: 'Email',
-                icon: Icons.alternate_email,
-              ),
-              CustomTextfield(
-                func: (val) {
-                  password = val;
-                },
-                obscureText: true,
-                hintText: 'Şifre',
-                icon: Icons.lock,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              GestureDetector(
-                onTap: () async {},
-                child: Container(
-                  width: size.width * 0.1,
-                  decoration: BoxDecoration(
-                    color: Constants.primaryColor,
-                    borderRadius: BorderRadius.circular(10),
+                  const Text(
+                    'Sign In',
+                    style: TextStyle(
+                      fontSize: 35.0,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                  child: Center(
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        bool result =
-                            await _authMethods.signInWithEmail(email, password);
-                        if (result) {
-                          Navigator.pushReplacement(
-                            context,
-                            PageTransition(
-                                child: const RootPage(),
-                                type: PageTransitionType.bottomToTop),
-                          );
-                        }
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  SizedBox(
+                    width: size.width / 4,
+                    height: size.height / 8,
+                    child: CustomTextfield(
+                      func: (val) {
+                        email = val;
                       },
-                      child: const Text(
-                        'Giriş Yap',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
+                      obscureText: false,
+                      hintText: 'Email',
+                      icon: Icons.alternate_email,
+                    ),
+                  ),
+                  SizedBox(
+                    width: size.width / 4,
+                    height: size.height / 8,
+                    child: CustomTextfield(
+                      func: (val) {
+                        password = val;
+                      },
+                      obscureText: true,
+                      hintText: 'Şifre',
+                      icon: Icons.lock,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      bool result =
+                          await _authMethods.signInWithEmail(email, password);
+                      if (result) {
+                        Navigator.pushReplacement(
+                          context,
+                          PageTransition(
+                              child: const RootPage(),
+                              type: PageTransitionType.bottomToTop),
+                        );
+                      }
+                    },
+                    child: Container(
+                      width: size.width * 0.1,
+                      decoration: BoxDecoration(
+                        color: Constants.primaryColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 20,
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Giriş Yap',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    PageTransition(
-                        child: const ForgotPassword(),
-                        type: PageTransitionType.bottomToTop),
-                  );
-                },
-                child: Center(
-                  child: Text.rich(
-                    TextSpan(children: [
-                      TextSpan(
-                        text: 'Şifreni unuttuysan',
-                        style: TextStyle(
-                          color: Constants.blackColor,
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        PageTransition(
+                            child: const ForgotPassword(),
+                            type: PageTransitionType.bottomToTop),
+                      );
+                    },
+                    child: Center(
+                      child: Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text: 'Şifreni unuttuysan',
+                              style: TextStyle(
+                                color: Constants.blackColor,
+                              ),
+                            ),
+                            TextSpan(
+                              text: ' Buradan Sıfırla',
+                              style: TextStyle(
+                                color: Constants.primaryColor,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      TextSpan(
-                        text: ' Buradan Sıfırla',
-                        style: TextStyle(
-                          color: Constants.primaryColor,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: size.width / 4,
+                    height: size.height / 8,
+                    child: const Row(
+                      children: [
+                        Expanded(child: Divider()),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text('Veya'),
                         ),
+                        Expanded(child: Divider()),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    width: size.width / 4,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Constants.primaryColor,
                       ),
-                    ]),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 15,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SizedBox(
+                          height: 30,
+                          child: Image.asset('assets/images/google.png'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () async {
+                            /**/ bool result =
+                                await _authMethods.signInWithGoogle();
+                            if (result) {
+                              Navigator.pushReplacement(
+                                context,
+                                PageTransition(
+                                    child: const RootPage(),
+                                    type: PageTransitionType.bottomToTop),
+                              );
+                            }
+                          },
+                          child: Center(
+                            child: Text(
+                              'Google ile Giriş Yap',
+                              style: TextStyle(
+                                color: Constants.blackColor,
+                                fontSize: 18.0,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              /*
-              Row(
-                children: const [
-                  Expanded(child: Divider()),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Text('Veya'),
+                  const SizedBox(
+                    height: 20,
                   ),
-                  Expanded(child: Divider()),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          PageTransition(
+                              child: SignUp(),
+                              type: PageTransitionType.bottomToTop));
+                    },
+                    child: Center(
+                      child: Text.rich(
+                        TextSpan(children: [
+                          TextSpan(
+                            text: "Are you new to recipe? ",
+                            style: TextStyle(
+                              color: Constants.blackColor,
+                            ),
+                          ),
+                          TextSpan(
+                            text: 'Sign Up',
+                            style: TextStyle(
+                              color: Constants.primaryColor,
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ),
+                  ), /**/
                 ],
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                width: size.width,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Constants.primaryColor),
-                    borderRadius: BorderRadius.circular(10)),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    SizedBox(
-                      height: 30,
-                      child: Image.asset('assets/images/google.png'),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        /**/ bool result =
-                            await _authMethods.signInWithGoogle();
-                        if (result) {
-                          Navigator.pushReplacement(
-                            context,
-                            PageTransition(
-                                child: const RootPage(),
-                                type: PageTransitionType.bottomToTop),
-                          );
-                        }
-                      },
-                      child: Text(
-                        'Google ile Giriş Yap',
-                        style: TextStyle(
-                          color: Constants.blackColor,
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(
-                      context,
-                      PageTransition(
-                          child: SignUp(),
-                          type: PageTransitionType.bottomToTop));
-                },
-                child: Center(
-                  child: Text.rich(
-                    TextSpan(children: [
-                      TextSpan(
-                        text: "Herbarist'te yeni misin? ",
-                        style: TextStyle(
-                          color: Constants.blackColor,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'Üye Ol',
-                        style: TextStyle(
-                          color: Constants.primaryColor,
-                        ),
-                      ),
-                    ]),
-                  ),
-                ),
-              ), */ /**/
             ],
           ),
         ),

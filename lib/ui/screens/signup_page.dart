@@ -26,7 +26,7 @@ class SignUp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset('assets/images/signup.png'),
+              Image.asset('assets/images/logo.png'),
               const Text(
                 'Sign Up',
                 style: TextStyle(
@@ -80,7 +80,7 @@ class SignUp extends StatelessWidget {
                         print(email);
                         print(fullName);
                         print(password);
-                        _authMethods.signUpWithEmail(email, password);
+                        _authMethods.signUpWithEmail(email, password, fullName);
                       },
                       child: Text(
                         'Sign Up.',

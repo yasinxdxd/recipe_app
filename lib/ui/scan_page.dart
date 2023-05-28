@@ -8,7 +8,29 @@ class ScanPage extends StatefulWidget {
   const ScanPage({Key? key}) : super(key: key);
 
   //List of Plants data
-  static List<Recipe> recipeList = [];
+  static List<Recipe> recipeList = [
+    Recipe(
+        recipeId: 0,
+        category: "Italian",
+        recipeName: "Cheseey Pizza",
+        rating: 0,
+        cookingTime: "45 min",
+        imageURL: 'assets/images/pizza image.jpg',
+        isFavorated: false,
+        decription: "Delicious pizza you have never eat before!",
+        isSelected: false),
+    Recipe(
+        recipeId: 1,
+        category: "Turkish",
+        recipeName: "Red Lentil Soup",
+        rating: 0,
+        cookingTime: "25 min",
+        imageURL: 'assets/images/soup image.jpg',
+        isFavorated: false,
+        decription:
+            "Delicious traditional tastes from the bridge between Middle East and Europe!",
+        isSelected: false),
+  ];
 
   //Get the favorated items
   static List<Recipe> getFavoritedPlants() {
