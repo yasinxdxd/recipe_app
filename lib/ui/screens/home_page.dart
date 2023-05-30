@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
 
     List<Recipe> _recipeList = ScanPage.recipeList;
 
-    //Plants category
+    //Recipies category
     List<String> _recipeTypes = [
       'Recommended',
     ];

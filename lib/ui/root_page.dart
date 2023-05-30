@@ -26,7 +26,7 @@ class _RootPageState extends State<RootPage> {
     return [
       const HomePage(),
       FavoritePage(
-        favoritedPlants: favorites,
+        favoritedRecipies: favorites,
       ),
       const ProfilePage(),
     ];
@@ -93,9 +93,9 @@ class _RootPageState extends State<RootPage> {
           onTap: (index) {
             setState(() {
               _bottomNavIndex = index;
-              final List<Recipe> favoritedPlants =
-                  ScanPage.getFavoritedPlants();
-              favorites = favoritedPlants;
+              final List<Recipe> favoritedRecipies =
+                  ScanPage.getFavoritedRecipies();
+              favorites = favoritedRecipies;
             });
           }),
     );

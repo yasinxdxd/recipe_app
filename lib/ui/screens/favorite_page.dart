@@ -4,8 +4,8 @@ import 'package:recipe_app/models/recipe.dart';
 import 'package:recipe_app/ui/screens/widgets/recipe_widget.dart';
 
 class FavoritePage extends StatefulWidget {
-  final List<Recipe> favoritedPlants;
-  const FavoritePage({Key? key, required this.favoritedPlants})
+  final List<Recipe> favoritedRecipies;
+  const FavoritePage({Key? key, required this.favoritedRecipies})
       : super(key: key);
 
   @override
@@ -17,7 +17,7 @@ class _FavoritePageState extends State<FavoritePage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: widget.favoritedPlants.isEmpty
+      body: widget.favoritedRecipies.isEmpty
           ? Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,12 +45,12 @@ class _FavoritePageState extends State<FavoritePage> {
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 30),
               height: size.height * .8,
               child: ListView.builder(
-                  itemCount: widget.favoritedPlants.length,
+                  itemCount: widget.favoritedRecipies.length,
                   scrollDirection: Axis.vertical,
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (BuildContext context, int index) {
                     return RecipeWidget(
-                        index: index, recipeList: widget.favoritedPlants);
+                        index: index, recipeList: widget.favoritedRecipies);
                   }),
             ),
     );

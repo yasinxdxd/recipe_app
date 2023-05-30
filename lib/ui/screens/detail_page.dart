@@ -265,7 +265,7 @@ class _DetailPageState extends State<DetailPage> {
                     ]),
                 child: const Center(
                   child: Text(
-                    'BU BİTKİYE SAHİBİM',
+                    'I\'ve tried this recipe before!',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20.0,

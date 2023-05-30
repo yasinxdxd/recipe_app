@@ -20,7 +20,7 @@ class ForgotPassword extends StatelessWidget {
             children: [
               Image.asset('assets/images/reset-password.png'),
               const Text(
-                'Şifremi Unuttum',
+                'Forget my password',
                 style: TextStyle(
                   fontSize: 35.0,
                   fontWeight: FontWeight.w700,
@@ -64,7 +64,7 @@ class ForgotPassword extends StatelessWidget {
                   Navigator.pushReplacement(
                       context,
                       PageTransition(
-                          child: SignIn(),
+                          child: const SignIn(),
                           type: PageTransitionType.bottomToTop));
                 },
                 child: Center(

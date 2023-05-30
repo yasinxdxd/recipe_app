@@ -7,7 +7,7 @@ import 'package:recipe_app/ui/root_page.dart';
 class ScanPage extends StatefulWidget {
   const ScanPage({Key? key}) : super(key: key);
 
-  //List of Plants data
+  //List of Recipies data
   static List<Recipe> recipeList = [
     Recipe(
         recipeId: 0,
@@ -33,16 +33,16 @@ class ScanPage extends StatefulWidget {
   ];
 
   //Get the favorated items
-  static List<Recipe> getFavoritedPlants() {
+  static List<Recipe> getFavoritedRecipies() {
     List<Recipe> _travelList = ScanPage.recipeList;
     return _travelList.where((element) => element.isFavorated == true).toList();
   }
 
   //Get the cart items
   /*
-  static List<Recipe> addedToCartPlants() {
-    List<Recipe> _selectedPlants = ScanPage.recipeList;
-    return _selectedPlants
+  static List<Recipe> addedToCartRecipies() {
+    List<Recipe> _selectedRecipies = ScanPage.recipeList;
+    return _selectedRecipies
         .where((element) => element.isSelected == true)
         .toList();
   }*/

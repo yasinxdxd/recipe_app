@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:recipe_app/ui/screens/profile_page.dart';
 
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -50,11 +51,11 @@ class AuthMethods {
     bool result = false;
 
     try {
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      final credential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      result = true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -65,12 +66,15 @@ class AuthMethods {
       print(e);
     }
 
-    try {
-      Map<String, dynamic> userData = Map();
-      userData["email"] = email;
-      userData["name"] = fullName;
-      _firestore.collection("Users").add(userData);
-    } catch (e) {}
+    if (result) {
+      try {
+        Map<String, dynamic> userData = Map();
+        userData["email"] = email;
+        userData["name"] = fullName;
+        _firestore.collection("Users").add(userData);
+      } catch (e) {}
+    }
+
     return result;
   }
 
@@ -78,19 +82,9 @@ class AuthMethods {
     bool result = false;
 
     try {
-      final credential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
-
+      final credential = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
       result = true;
-
-      try {
-        print(_firestore
-            .collection("Users")
-            .get()
-            .then((querySnapshot) => querySnapshot.docs.forEach((doc) {
-                  print(doc["email"]);
-                })));
-      } catch (e) {}
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -100,5 +94,23 @@ class AuthMethods {
     }
 
     return result;
+  }
+
+  void setFullNameAccordingToEmail(String email) async {
+    //try {
+    ProfileUserData.fullName =
+        await _firestore.collection("Users").get().then((querySnapshot) {
+      for (var i = 0; i < querySnapshot.docs.length; i++) {
+        String docEmail = querySnapshot.docs[i]["email"].toString();
+        if (email.compareTo(docEmail) == 0) {
+          ProfileUserData.fullName = querySnapshot.docs[i]["name"].toString();
+          return ProfileUserData.fullName;
+        }
+      }
+      return "";
+    });
+    //} catch (e) {}
+
+    //return name;
   }
 }

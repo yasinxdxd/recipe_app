@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/constants.dart';
 import 'package:recipe_app/ui/screens/widgets/profile_widget.dart';
 
+class ProfileUserData {
+  const ProfileUserData();
+  static String email = "";
+  static String fullName = "";
+}
+
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -9,58 +15,58 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        height: size.height,
-        width: size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: 150,
-              child: const CircleAvatar(
-                radius: 60,
-                backgroundImage: ExactAssetImage('assets/images/aberk.png'),
-              ),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: Constants.primaryColor.withOpacity(.5),
-                  width: 5.0,
-                ),
+        body: Container(
+      padding: const EdgeInsets.all(16),
+      height: size.height,
+      width: size.width,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: 150,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: Constants.primaryColor.withOpacity(.5),
+                width: 5.0,
               ),
             ),
-            const SizedBox(
-              height: 10,
+            child: const CircleAvatar(
+              radius: 60,
+              backgroundImage: ExactAssetImage('assets/images/default.png'),
             ),
-            SizedBox(
-              width: size.width * .3,
-              child: Row(
-                children: [
-                  Text(
-                    'Abdullah Berk İpek',
-                    style: TextStyle(
-                      color: Constants.blackColor,
-                      fontSize: 20,
-                    ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            width: size.width * .3,
+            child: Row(
+              children: [
+                Text(
+                  ProfileUserData.fullName,
+                  style: TextStyle(
+                    color: Constants.blackColor,
+                    fontSize: 20,
                   ),
-                  SizedBox(
-                      height: 24,
-                      child: Image.asset("assets/images/verified.png")),
-                ],
-              ),
+                ),
+                SizedBox(
+                    height: 24,
+                    child: Image.asset("assets/images/verified.png")),
+              ],
             ),
-            Text(
-              'melihgumus547@gmail.com',
-              style: TextStyle(
-                color: Constants.blackColor.withOpacity(.3),
-              ),
+          ),
+          Text(
+            ProfileUserData.email,
+            style: TextStyle(
+              color: Constants.blackColor.withOpacity(.3),
             ),
-            const SizedBox(
-              height: 30,
-            ),
-            SizedBox(
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          SingleChildScrollView(
+            child: SizedBox(
               height: size.height * .7,
               width: size.width,
               child: const Column(
@@ -68,33 +74,33 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   ProfileWidget(
                     icon: Icons.person,
-                    title: 'Profilim',
+                    title: 'Profile',
                   ),
                   ProfileWidget(
                     icon: Icons.settings,
-                    title: 'Ayarlar',
+                    title: 'Settings',
                   ),
                   ProfileWidget(
                     icon: Icons.notifications,
-                    title: 'Bildirimler',
+                    title: 'Notifications',
                   ),
                   ProfileWidget(
                     icon: Icons.chat,
-                    title: 'Sıkça Sorulan Sorular',
+                    title: 'Q&A',
                   ),
                   ProfileWidget(
                     icon: Icons.share,
-                    title: 'Paylaş',
+                    title: 'Share',
                   ),
                   ProfileWidget(
                     icon: Icons.logout,
-                    title: 'Çıkış Yap',
+                    title: 'Log out',
                   ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     ));
   }
