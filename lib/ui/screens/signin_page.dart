@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:recipe_app/backend/auth_methods.dart';
 import 'package:recipe_app/constants.dart';
 import 'package:recipe_app/ui/root_page.dart';
@@ -7,6 +8,7 @@ import 'package:recipe_app/ui/screens/profile_page.dart';
 import 'package:recipe_app/ui/screens/signup_page.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:recipe_app/ui/screens/widgets/custom_textfield.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SignIn extends StatefulWidget {
   // const keyword is deleted from const constructor(SignIn)
@@ -34,10 +36,25 @@ class _SignInState extends State<SignIn> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
-              width: size.width / 2,
-              height: size.height,
-              child: Image.asset('assets/images/signin.png'),
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 24.0),
+                  child: Text(
+                    "Welcome to 'recipe'",
+                    style: GoogleFonts.dancingScript(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 56,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: size.width / 2,
+                  height: size.height * 0.7,
+                  child: Lottie.network(
+                      "https://assets1.lottiefiles.com/packages/lf20_4L6JjAIiVL.json"), //Image.asset('assets/images/signin.png'),
+                ),
+              ],
             ),
             SizedBox(
               width: size.width / 16,
@@ -66,7 +83,7 @@ class _SignInState extends State<SignIn> {
                       email = val;
                     },
                     obscureText: false,
-                    hintText: 'Email',
+                    hintText: 'E-mail',
                     icon: Icons.alternate_email,
                   ),
                 ),
@@ -78,7 +95,7 @@ class _SignInState extends State<SignIn> {
                       password = val;
                     },
                     obscureText: true,
-                    hintText: 'Şifre',
+                    hintText: 'Password',
                     icon: Icons.lock,
                   ),
                 ),

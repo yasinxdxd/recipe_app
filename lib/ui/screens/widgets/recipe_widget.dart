@@ -31,7 +31,7 @@ class RecipeWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: Constants.primaryColor.withOpacity(.1),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(4),
         ),
         height: 80.0,
         padding: const EdgeInsets.only(left: 10, top: 10),

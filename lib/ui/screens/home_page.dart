@@ -169,6 +169,10 @@ class _HomePageState extends State<HomePage> {
                             child: Container(
                               height: 50,
                               width: 50,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(50),
+                              ),
                               child: IconButton(
                                 onPressed: () {
                                   setState(() {
@@ -180,10 +184,6 @@ class _HomePageState extends State<HomePage> {
                                   color: Constants.primaryColor,
                                 ),
                                 iconSize: 30,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(50),
                               ),
                             ),
                           ),

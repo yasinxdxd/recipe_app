@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:recipe_app/constants.dart';
 
 import 'screens/signin_page.dart';
@@ -53,17 +54,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             controller: _pageController,
             children: [
               createPage(
-                image: 'assets/images/logo.png',
+                image: 'https://assets6.lottiefiles.com/temp/lf20_nXwOJj.json',
+                isAnim: true,
                 title: Constants.titleThree,
                 description: Constants.descriptionThree,
               ),
               createPage(
-                image: 'assets/images/hamburger.png',
+                image:
+                    'https://assets6.lottiefiles.com/packages/lf20_qX4zwY.json',
+                isAnim: true,
                 title: Constants.titleOne,
                 description: Constants.descriptionOne,
               ),
               createPage(
-                image: 'assets/images/plant-two.png',
+                image:
+                    'https://assets6.lottiefiles.com/packages/lf20_thgy1p9c.json',
+                isAnim: true,
                 title: Constants.titleTwo,
                 description: Constants.descriptionTwo,
               ),
@@ -147,12 +153,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
 class createPage extends StatelessWidget {
   final String image;
+  final bool isAnim;
   final String title;
   final String description;
 
   const createPage({
     Key? key,
     required this.image,
+    required this.isAnim,
     required this.title,
     required this.description,
   }) : super(key: key);
@@ -166,7 +174,7 @@ class createPage extends StatelessWidget {
         children: [
           SizedBox(
             height: 350,
-            child: Image.asset(image),
+            child: isAnim ? Lottie.network(image) : Image.asset(image),
           ),
           const SizedBox(
             height: 20,
